@@ -95,6 +95,22 @@ The objective is not to allow the AI to make legal decisions, but to use it as a
 
 ---
 
+## 📸 Screenshots
+
+### Contract Overview & Financial Terms
+
+![Contract Overview](screenshots/01-dashboard.png)
+
+### Renewal, Termination & Attention Points
+
+![Contract Analysis](screenshots/02-contract-analysis.png)
+
+### Key Clauses
+
+![Key Clauses](screenshots/03-attention-points.png)
+
+---
+
 ## 🧪 MVP Validation
 
 The application was tested end-to-end using a real PDF contract.
