@@ -1,163 +1,214 @@
 # AI Contract Analyzer
 
-AI-powered contract analysis prototype for extracting key contractual information and identifying potential areas of attention.
+**AI-powered contract analysis MVP for structured information extraction from PDF documents**
 
-## Problem
+AI Contract Analyzer is a functional prototype designed to demonstrate how Generative AI can transform unstructured contract text into a structured and easier-to-review overview.
+
+The application combines **PDF processing, Google Gemini, structured AI output, Supabase storage and a Lovable dashboard**.
+
+Built independently as a portfolio project to explore practical AI document analysis and reliable information extraction.
+
+---
+
+## 🎯 Business Problem
 
 Reviewing contracts manually can be time-consuming.
 
-Important information such as payment terms, duration, renewal conditions, termination clauses, penalties and obligations is often distributed across different sections of a document.
+Important information such as payment terms, duration, renewal conditions, termination clauses, penalties and obligations may be distributed across different sections of a document.
 
-The initial review therefore requires users to read and interpret a potentially long document before they can organize the information they need.
+This means users often need to read and interpret an entire contract before identifying the information relevant to an initial review.
 
-## Solution
+AI Contract Analyzer explores how Generative AI can reduce this manual effort by extracting and organizing key contractual information automatically.
 
-AI Contract Analyzer is a lightweight web application that uses AI to extract and structure relevant information from PDF contracts.
+---
 
-The goal is not to replace legal professionals or provide legal advice.
+## 🚀 What I Built
 
-Instead, the application is designed to reduce the time required for an initial review by transforming unstructured contract text into a structured overview.
-
-## How It Works
+I designed and implemented an end-to-end AI document analysis workflow:
 
 ```text
 PDF Contract
-     ↓
-Supabase Storage
-     ↓
-PDF Text Extraction
-     ↓
-Gemini AI Analysis
-     ↓
-Structured JSON
-     ↓
+      ↓
+Private Supabase Storage
+      ↓
+Server-Side PDF Text Extraction
+      ↓
+Google Gemini Analysis
+      ↓
+Structured JSON Output
+      ↓
 Results Dashboard
+```
 
-1. Upload
+The application extracts the document text on the server and sends it to Gemini for structured factual analysis.
 
-The user uploads a PDF contract.
+The AI is instructed to extract information supported by the contract rather than generate a generic summary or make unsupported assumptions.
 
-The document is stored in a private Supabase Storage bucket.
+Missing information can explicitly be returned as **"Not specified"**.
 
-2. Text Extraction
+---
 
-The application extracts the text from the uploaded PDF on the server.
+## ✨ Current Features
 
-If the PDF is unreadable or contains no extractable text, the process stops and an error is displayed.
+- PDF contract upload
+- private document storage with Supabase
+- server-side PDF text extraction
+- Google Gemini API integration
+- structured AI output
+- contract type and parties extraction
+- financial terms extraction
+- start/end dates and duration
+- renewal and termination conditions
+- key clause extraction
+- attention points
+- explicit handling of missing information
+- results dashboard
+- basic error handling
+- end-to-end testing with a real PDF contract
 
-3. AI Analysis
+---
 
-The extracted text is sent to Gemini through a server-side API integration.
-
-The AI is instructed to focus on factual extraction rather than generating a generic summary.
-
-4. Structured Output
-
-The AI returns structured information covering:
-
-Contract type
-Parties
-Purpose
-Start and end dates
-Duration
-Financial terms
-Renewal conditions
-Termination conditions
-Key clauses
-Attention Points
-
-Missing information is not invented and can be returned as Not specified.
-
-5. Results Dashboard
-
-The structured output is displayed in a simple dashboard designed to make the most relevant contractual information easier to review.
-
-AI Design Principles
+## 🧠 AI Design Principles
 
 The project uses several principles to improve reliability:
 
-Structured extraction instead of generic summarization
-No unsupported assumptions
-Explicit handling of missing information
-Factual extraction over legal interpretation
-No numerical risk score
-Attention Points based on actual contract content
-Human review remains necessary
-Technology
-Frontend: Lovable
-Backend / Storage: Supabase
-PDF Processing: Server-side PDF text extraction
-AI: Google Gemini API
-Output: Structured JSON
-Deployment: Lovable
-MVP Scope
-Included
-PDF upload
-Private document storage
-PDF text extraction
-AI-powered contract analysis
-Structured JSON output
-Contract information dashboard
-Attention Points
-Basic error handling
-Not Included
-Legal advice
-Automated legal decisions
-Contract negotiation
-Contract generation
-OCR for scanned documents
-Multi-contract comparison
-User accounts
-Collaboration
-Advanced risk scoring
-Testing
+- structured extraction instead of generic summarization
+- factual extraction over unsupported interpretation
+- explicit handling of missing information
+- no invented contract information
+- no numerical risk score
+- attention points based on actual contract content
+- human verification of AI-generated results
+
+The objective is not to allow the AI to make legal decisions, but to use it as an information extraction layer inside a controlled workflow.
+
+---
+
+## 🛠 Tech Stack
+
+- **Lovable** — frontend and dashboard
+- **Supabase** — backend and private document storage
+- **Google Gemini API** — contract analysis and structured extraction
+- **Server-side PDF processing** — document text extraction
+- **Structured JSON** — controlled AI output
+- **GitHub** — documentation and version control
+
+---
+
+## 🧪 MVP Validation
 
 The application was tested end-to-end using a real PDF contract.
 
-The test verified:
+The validated workflow was:
 
-PDF upload
-Supabase storage
-Text extraction
-Gemini analysis
-Structured output
-Missing information handling
-Attention Points
-Error handling
-Successful build
+```text
+PDF Upload
+→ Supabase Storage
+→ Text Extraction
+→ Gemini Analysis
+→ Structured Output
+→ Results Dashboard
+```
 
-Detailed testing and validation are documented in:
+Testing verified:
 
-docs/05-testing.md
+- successful PDF upload
+- private document storage
+- PDF text extraction
+- Gemini analysis
+- structured output generation
+- handling of missing information
+- attention-point extraction
+- basic error handling
+- successful application build
 
-Project Documentation
+Detailed testing documentation:
 
-The project was designed and documented incrementally:
+[Testing & Validation](docs/05-testing.md)
 
-Problem Definition
-Solution Design
-AI Workflow
-User Interface
-Testing & Validation
-Limitations
+---
 
-This is an MVP and should be considered an analysis aid rather than a legal tool.
+## 📌 MVP Scope
 
-AI-generated results may contain errors or misunderstandings. Users should verify relevant information against the original contract and seek professional legal advice when appropriate.
+### Included
+
+- PDF upload
+- private document storage
+- PDF text extraction
+- AI-powered contract analysis
+- structured output
+- contract information dashboard
+- attention points
+- basic error handling
+
+### Not Included
+
+- legal advice
+- automated legal decisions
+- contract negotiation
+- contract generation
+- OCR for scanned documents
+- multi-contract comparison
+- collaboration features
+- advanced risk scoring
+
+---
+
+## ⚠️ Limitations
+
+AI Contract Analyzer is an MVP and should be considered an **analysis aid rather than a legal tool**.
+
+AI-generated results may contain errors or misunderstandings. Relevant information should always be verified against the original contract and professional legal advice should be obtained when appropriate.
 
 The current version works with PDFs containing extractable text and does not include OCR for scanned documents.
 
-Lessons Learned
+---
+
+## 📚 Project Documentation
+
+Detailed project documentation is available in the `docs` folder:
+
+- [Problem Definition](docs/01-problem-definition.md)
+- [Solution Design](docs/02-solution-design.md)
+- [AI Workflow](docs/03-ai-workflow.md)
+- [User Interface](docs/04-user-interface.md)
+- [Testing & Validation](docs/05-testing.md)
+
+---
+
+## 💡 What This MVP Demonstrates
+
+- practical Generative AI integration
+- AI-assisted document analysis
+- structured LLM output
+- server-side AI integration
+- handling of unstructured business documents
+- explicit controls against unsupported AI assumptions
+- backend and private file storage with Supabase
+- end-to-end MVP design and validation
+- documentation of AI product decisions and limitations
+
+---
+
+## 🔄 Possible Future Improvements
+
+Future versions could include:
+
+- OCR for scanned contracts
+- multi-contract comparison
+- clause search
+- user authentication
+- contract history and filtering
+- human review workflow
+- exportable analysis reports
+- configurable extraction schemas
+
+---
+
+## 📖 Lessons Learned
 
 Building an AI document-analysis workflow requires more than connecting an LLM API.
 
-Reliable results depend on the combination of:
-
-document processing
-structured prompting
-controlled AI output
-secure API integration
-explicit handling of missing information
-validation against real documents
+Reliable results depend on the combination of **document processing, structured prompting, controlled AI output, secure API integration, explicit handling of missing information and validation against real documents**.
 
 The project also highlighted the importance of testing AI-generated information against the original source document rather than assuming that a technically successful AI response is necessarily accurate.
